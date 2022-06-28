@@ -1,7 +1,13 @@
 import Head from 'next/head'
 import Navbar from '../components/Navbar'
 
+import { useSession } from 'next-auth/react'
+
+
 export default function Home() {
+
+  const { data: session } = useSession()
+
   return (
     <div>
       <Head>
@@ -10,7 +16,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar />
+      {session?.user?.email} <br />
+      {session?.user?.image && <img src={session.user.image} className="h-10 w-10 p-1 rounded-full hover:bg-gray-200 cursor-pointer"/>}
 
     </div>
   )
