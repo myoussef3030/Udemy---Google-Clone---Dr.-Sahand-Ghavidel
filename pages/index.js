@@ -1,4 +1,7 @@
 import Head from 'next/head'
+import Image from 'next/image'
+import { SearchIcon, MicrophoneIcon} from '@heroicons/react/solid'
+
 import Navbar from '../components/Navbar'
 
 import { useSession } from 'next-auth/react'
@@ -18,6 +21,25 @@ export default function Home() {
 
       {session?.user?.email} <br />
       {session?.user?.image && <img src={session.user.image} className="h-10 w-10 p-1 rounded-full hover:bg-gray-200 cursor-pointer"/>}
+
+      <form className="flex flex-col items-center mt-40">
+
+        <Image src="https://i.dlpng.com/static/png/6561851_preview.png" width="400px" height="100px" objectFit='contain'/>
+
+        <div className="flex items-center border border-gray-200 rounded-full w-full sm:max-w-[80%] lg:max-w-[60%] px-4 hover:shadow-lg focus:shadow-lg">
+
+            <SearchIcon className="h-5 w-5 text-gray-500"/>
+            <input className="flex-grow p-2 border-none outline-none"/>
+            <MicrophoneIcon className="h-5 w-5 text-gray-500"/>
+
+        </div>
+
+        <div className='mt-5 mx-auto flex flex-col sm:flex-row w-[50%] justify-center space-x-4'>
+            <button className='btn-search'>Google Search</button>
+            <button className='btn-search'>I'm feeling Lucky</button>
+        </div>
+
+      </form>
 
     </div>
   )

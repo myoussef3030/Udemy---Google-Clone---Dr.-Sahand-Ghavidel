@@ -2,8 +2,6 @@ import classes from '../component-styles/Navbar.module.scss'
 import UserMenu from './UserMenu'
 
 
-
-
 const Navbar = () => {
 
     return (
