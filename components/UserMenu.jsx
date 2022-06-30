@@ -1,4 +1,3 @@
-import classes from '../component-styles/UserMenu.module.scss'
 import { signIn, signOut, useSession } from 'next-auth/react'
 
 

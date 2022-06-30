@@ -1,8 +1,7 @@
-import classes from '../component-styles/Navbar.module.scss'
 import UserMenu from './UserMenu'
 
 
-const Navbar = () => {
+const IndexNavbar = () => {
 
     return (
         <div className="flex justify-between text-sm p-5 text-gray-700">
@@ -22,6 +21,6 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default IndexNavbar
 
 
