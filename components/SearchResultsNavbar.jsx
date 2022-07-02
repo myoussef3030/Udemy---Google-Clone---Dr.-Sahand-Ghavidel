@@ -3,6 +3,7 @@ import { useRef } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import UserMenu from './UserMenu'
+import SearchResultsNavbarOptions from './SearchResultsNavbarOptions'
 
 const SearchResultsNavbar = () => {
 
@@ -16,11 +17,11 @@ const SearchResultsNavbar = () => {
 
         if(!searchTerm) return
 
-        router.push(`/search-results?searchTerm=${searchTerm}`)
+        router.push(`/search-results?searchTerm=${searchTerm}&searchType=${searchType}`)
 
     }
 
-    return (
+    return (<>
         <header className="sticky top-0 bg-white flex items-center w-[100%]">
 
             <Image 
@@ -30,6 +31,7 @@ const SearchResultsNavbar = () => {
                 objectFit='contain'
                 className="cursor-pointer"
             />
+
 
 
             <form className="flex items-center space-x-5 border border-gray-200 rounded-full shadow-lg mt-3 px-6 py-3 ml-10 mr-5 flex-grow max-w-3xl">
@@ -47,7 +49,11 @@ const SearchResultsNavbar = () => {
 
 
         </header>
-    )
+
+        <div>
+            <SearchResultsNavbarOptions />
+        </div>
+    </>)
 }
 
 export default SearchResultsNavbar

@@ -22,7 +22,8 @@ export default function Home() {
 
       if(!searchTerm) return
 
-      router.push(`/search-results?searchTerm=${searchTerm}`)
+      // blank search type (searchType=) will search normal, and searchType=image will search images
+      router.push(`/search-results?searchTerm=${searchTerm}&searchType=`)  
   }
 
   return (
