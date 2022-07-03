@@ -17,7 +17,7 @@ const SearchResultsNavbar = () => {
 
         if(!searchTerm) return
 
-        router.push(`/search-results?searchTerm=${searchTerm}&searchType=${searchType}`)
+        router.push(`/search-results?searchTerm=${searchTerm}&searchType=${router.query.searchType}`)
 
     }
 

@@ -1,13 +1,14 @@
 import Head from "next/head"
 import SearchResultsNavbar from "../components/SearchResultsNavbar"
-// import { useRouter } from "next/router"
+import { useRouter } from "next/router"
 import axios from 'axios'
 
 import mockData from '../mock-data/index'
+import SearchResultsList from "../components/SearchResultsList"
 
 const SearchResults = ({results}) => {
 
-    // const router = useRouter()
+    const router = useRouter()
 
     console.log(results)
 
@@ -15,10 +16,12 @@ const SearchResults = ({results}) => {
     return (
         <div>
             <Head>
-                <title>Search Results Page</title>
+                <title>{router.query.searchTerm}</title>
             </Head>
 
             <SearchResultsNavbar />
+
+            <SearchResultsList results={results} />
         </div>
     )
 }
