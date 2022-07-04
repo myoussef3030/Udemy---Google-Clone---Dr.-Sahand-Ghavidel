@@ -54,7 +54,7 @@ export default function Home() {
 
         <div className='mt-5 mx-auto flex flex-col sm:flex-row w-[50%] justify-center space-x-4'>
             <button className='btn-search' onClick={search}>Google Search</button>
-            <button className='btn-search'>I'm feeling Lucky</button>
+            <button className='btn-search'>I feeling Lucky</button>
         </div>
 
       </form>
