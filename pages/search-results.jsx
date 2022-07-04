@@ -5,13 +5,13 @@ import axios from 'axios'
 
 import mockData from '../mock-data/index'
 import SearchResultsList from "../components/SearchResultsList"
+import PaginationButtons from "../components/PaginationButtons"
 
 const SearchResults = ({results}) => {
 
     const router = useRouter()
 
     console.log(results)
-
 
     return (
         <div>
@@ -22,6 +22,8 @@ const SearchResults = ({results}) => {
             <SearchResultsNavbar />
 
             <SearchResultsList results={results} />
+
+            <PaginationButtons />
         </div>
     )
 }
@@ -30,6 +32,8 @@ export default SearchResults
 
 export async function getServerSideProps(context){
 
+    const startIndex = context.query.start || 1 
+
     const searchTerm = context.query.searchTerm
     const searchType = context.query.searchType === '' ? "" : "&searchType=image"
 
@@ -37,15 +41,15 @@ export async function getServerSideProps(context){
 
     str = str.replace('INSERT_YOUR_API_KEY', process.env.GOOGLE_SEARCH_API_KEY)
     str = str.replace('017576662512468239146:omuauf_lfve', process.env.GOOGLE_SEARCH_ENGINE_CX)
-    str = str.replace('lectures', searchTerm + searchType)
+    str = str.replace('lectures', searchTerm + searchType + `&start=${startIndex}`)
     console.log(str)
     
-    // const {data} = await axios.get(str)
+     const {data} = await axios.get(str)
     
     return {
         props: {
-            // results: data
-            results: mockData
+            results: data
+            // results: mockData
         }
     }
 }
