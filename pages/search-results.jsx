@@ -3,9 +3,10 @@ import SearchResultsNavbar from "../components/SearchResultsNavbar"
 import { useRouter } from "next/router"
 import axios from 'axios'
 
-import mockData from '../mock-data/index'
+import mockData from '../mock-data/image-search-results'
 import SearchResultsList from "../components/SearchResultsList"
 import PaginationButtons from "../components/PaginationButtons"
+import ImageResultsList from "../components/ImageResultsList"
 
 const SearchResults = ({results}) => {
 
@@ -21,7 +22,9 @@ const SearchResults = ({results}) => {
 
             <SearchResultsNavbar />
 
-            <SearchResultsList results={results} />
+            {router.query.searchType === '' && <SearchResultsList results={results} />}
+
+           {router.query.searchType === 'image' && <ImageResultsList results={results}/>}
 
             <PaginationButtons />
         </div>
@@ -44,12 +47,12 @@ export async function getServerSideProps(context){
     str = str.replace('lectures', searchTerm + searchType + `&start=${startIndex}`)
     console.log(str)
     
-     const {data} = await axios.get(str)
+     // const {data} = await axios.get(str)
     
     return {
         props: {
-            results: data
-            // results: mockData
+            //results: data
+            results: mockData
         }
     }
 }
